@@ -1,24 +1,12 @@
-import fastify, { FastifyHttpOptions, FastifyBaseLogger } from 'fastify';
-import fastifyCookie from '@fastify/cookie';
-import { IncomingMessage, ServerResponse } from 'http';
-import { Server } from 'https';
-import { greeting, ping } from './routes/basic-routes';
+import express from 'express';
+import cors from 'cors';
+import { basicRoutes } from './routes';
 
-const build = (
-  opts: FastifyHttpOptions<
-    Server<typeof IncomingMessage, typeof ServerResponse>,
-    FastifyBaseLogger
-  > = {},
-) => {
-  const app = fastify(opts);
+const app = express();
 
-  app.register(fastifyCookie);
+app.use(express.json());
+app.use(cors());
 
-  app.register(ping);
-  app.register(greeting);
-  //   app.register(auth, { prefix: '/auth' });
+app.use('/', basicRoutes());
 
-  return app;
-};
-
-export { build };
+export { app };

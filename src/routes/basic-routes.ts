@@ -1,33 +1,11 @@
-import {
-  FastifyInstance,
-  FastifyRegisterOptions,
-  FastifyReply,
-  FastifyRequest,
-  FastifyPluginOptions,
-} from 'fastify';
+import { Request, Response } from 'express';
 
-const ping = (
-  fastify: FastifyInstance,
-  options: FastifyRegisterOptions<FastifyPluginOptions>,
-  done: (err?: Error | undefined) => void,
-) => {
-  fastify.get('/ping', async (request: FastifyRequest, reply: FastifyReply) => {
-    reply.send('pong');
-  });
-
-  done();
+const ping = (req: Request, res: Response) => {
+  res.status(200).json({ status: 200, message: 'pong' });
 };
 
-const greeting = (
-  fastify: FastifyInstance,
-  options: FastifyRegisterOptions<FastifyPluginOptions>,
-  done: (err?: Error | undefined) => void,
-) => {
-  fastify.get('/', async (request: FastifyRequest, reply: FastifyReply) => {
-    reply.send({ status: 200, message: 'Hello World!' });
-  });
-
-  done();
+const greeting = (req: Request, res: Response) => {
+  res.status(200).json({ status: 200, message: 'Hello World!' });
 };
 
 export { ping, greeting };

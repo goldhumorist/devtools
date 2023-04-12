@@ -1,11 +1,7 @@
-import { build } from './app';
+import { app } from './app';
 
-const server = build({ logger: true });
+const PORT = 3000;
 
-server.listen({ port: 3000 }, (err: Error | null, address: string) => {
-  if (err) {
-    console.error(err);
-    process.exit(1);
-  }
-  console.log(`Server listening at ${address}`);
+app.listen({ port: PORT }, () => {
+  console.log(`Server listening at ${PORT}`);
 });
