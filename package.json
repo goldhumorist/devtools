@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf ./build && tsc",
+    "build:deploy": "npm ci && npm run build",
     "start": "node ./build/server",
     "watch": " nodemon -e ts -w src -x npm run watch:serve",
     "watch:serve": "ts-node src/server",
