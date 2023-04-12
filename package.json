@@ -2,7 +2,7 @@
   "name": "devtools",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/server.ts",
   "scripts": {
     "build": "rimraf ./build && tsc",
     "build:deploy": "npm ci && npm run build",
