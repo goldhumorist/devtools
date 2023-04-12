@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 0
-      - name: SonarCloud ${{ secrets.SONAR_TOKEN } Scan
+      - name: SonarCloud Scan
         uses: sonarsource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
